@@ -16,12 +16,15 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
+import { ThemeProvider } from "./components/theme-provider";
+import { ThemeToggle } from "./components/theme-toggle";
+
 function App() {
   const [count, setCount] = useState(0);
   //test
 
   return (
-    <>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="container flex justify-center gap-5 py-5">
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} alt="Vite logo" />
@@ -63,7 +66,8 @@ function App() {
           </AlertDialogContent>
         </AlertDialog>
       </div>
-    </>
+      <ThemeToggle />
+    </ThemeProvider>
   );
 }
 
