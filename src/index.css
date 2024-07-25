@@ -67,3 +67,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  @font-face {
+    font-family: 'Sharp-Grotesk';
+    font-style: normal;
+    src: url("@/assets/SharpGrotesk-SemiBold20.otf") format("opentype");
+  }
+}
