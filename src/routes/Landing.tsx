@@ -1,71 +1,19 @@
-import { useState } from "react";
-import reactLogo from "@/assets/react.svg";
-import viteLogo from "/vite.svg";
-
 import { Button } from "@/components/ui/button";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-
-import { ThemeToggle } from "@/components/theme-toggle";
 
 function Landing() {
-  const [count, setCount] = useState(0);
-
+  const splash =
+    "https://a.ltrbxd.com/resized/sm/upload/6q/qu/l2/st/twisters-1200-1200-675-675-crop-000000.jpg";
   return (
-    <>
-      <div className="container flex justify-center gap-5 py-5">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} alt="React logo" />
-        </a>
+    <main className="px-4 lg:px-28">
+      <div className="flex justify-center">
+        <Button className="bg-green-500 text-gray-50 hover:bg-green-700">
+          Get Started — It's free!
+        </Button>
       </div>
-      <h1>Vite + React</h1>
-      <h1 className="text-4xl font-logo">Letterboxd</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="text-gray-400 py-5">
-        Click on the Vite and React logos to learn more
-      </p>
-      <div className="flex justify-center gap-3 p-2">
-        <Button>Click me</Button>
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button variant="outline">Show Dialog</Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      </div>
-      <ThemeToggle />
-    </>
+      <h1 className="text-xl text-muted-foreground text-center py-5">
+        The social network for film lovers.
+      </h1>
+    </main>
   );
 }
 

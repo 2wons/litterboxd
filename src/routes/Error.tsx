@@ -5,7 +5,7 @@ const ErrorPage = () => {
   console.error(error);
 
   return (
-    <div className="container justify-center">
+    <div className="p-5">
       <h1 className="text-4xl font-bold">Oops!</h1>
       <p>Sorry, an unexpected error has occured.</p>
       <p className="text-gray-600">{error.statusText || error.message}</p>

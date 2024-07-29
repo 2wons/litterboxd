@@ -18,7 +18,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        logo: ['Sharp-Grotesk']
+        logo: ['Sharp-Grotesk'],
+        headBold: ['Tiempos-Head-Bold'],
+        textRegular: ['Tiempos-Text-Regular']
       },
       colors: {
         border: "hsl(var(--border))",
@@ -76,5 +78,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("tailwind-gradient-mask-image")],
 }
