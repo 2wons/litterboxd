@@ -8,8 +8,14 @@ const Header = () => {
     "https://a.ltrbxd.com/resized/sm/upload/6q/qu/l2/st/twisters-1200-1200-675-675-crop-000000.jpg";
   return (
     <div
-      className="movie-backdrop block h-[450px] bg-center bg-no-repeat bg-cover relative"
-      style={{ backgroundImage: `url(${splash})` }}
+      className={
+        location.pathname === "/films"
+          ? ""
+          : "movie-backdrop block h-[450px] bg-center bg-no-repeat bg-cover relative"
+      }
+      style={{
+        backgroundImage: `url(${location.pathname === "/films" ? "" : splash})`,
+      }}
     >
       <header className="px-4 lg:px-40 pt-5 pb-2">
         <div className="flex flex-row justify-center">
