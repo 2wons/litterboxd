@@ -8,6 +8,10 @@ import ErrorPage from "./routes/Error";
 import FilmList from "./routes/Films";
 import Layout from "./components/Layout";
 import Film from "./routes/Film";
+import Crew from "./routes/FIlm/Crew";
+import Cast from "./routes/FIlm/Cast";
+import Details from "./routes/FIlm/Details";
+import Genre from "./routes/FIlm/Genre";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +30,28 @@ const router = createBrowserRouter([
       {
         path: "film/:filmid",
         element: <Film />,
+        children: [
+          {
+            path: "/film/:filmid",
+            element: <Cast />,
+          },
+          {
+            path: "/film/:filmid/crew",
+            element: <Crew />,
+          },
+          {
+            path: "/film/:filmid/details",
+            element: <Details />,
+          },
+          {
+            path: "/film/:filmid/genre",
+            element: <Genre />,
+          },
+          {
+            path: "/film/:filmid/releases",
+            element: <Crew />,
+          },
+        ],
       },
     ],
   },

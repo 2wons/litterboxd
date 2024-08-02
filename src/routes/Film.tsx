@@ -1,32 +1,24 @@
-import Header from "@/components/Header";
+import Stats from "@/components/stats";
 import { Button } from "@/components/ui/button";
-import { Eye, Heart, Grid2X2 } from "lucide-react";
-
+import { Link, useLocation, useParams, Outlet } from "react-router-dom";
+import { useEffect } from "react";
 const Film = () => {
-  const splash =
-    "https://a.ltrbxd.com/resized/sm/upload/6q/qu/l2/st/twisters-1200-1200-675-675-crop-000000.jpg";
   const poster =
     "https://a.ltrbxd.com/resized/film-poster/6/4/1/6/0/8/641608-twisters-0-1000-0-1500-crop.jpg";
+
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location.pathname);
+  }, []);
+  const params = useParams();
   return (
     <div className="px-4 lg:px-32 py-2">
       <div className="grid grid-cols-3 gap-4 justify-items-center">
         <div className="col-span-1 px-1">
           <div className="flex flex-col items-center">
             <img src={poster} alt="" className="w-9/12 rounded-lg" />
-            <div className="inline-flex space-x-2 text-xs text-muted-foreground items-center py-2">
-              <div className="inline-flex space-x-1">
-                <Eye size={16} className="text-green-500" />
-                <span>261k</span>
-              </div>
-              <div className="inline-flex space-x-1">
-                <Grid2X2 size={16} className="text-sky-500" />
-                <span>57k</span>
-              </div>
-              <div className="inline-flex space-x-1">
-                <Heart size={16} className="text-orange-400" />
-                <span>90k</span>
-              </div>
-            </div>
+            <Stats watched={210} appears={50} liked={15} />
           </div>
         </div>
         <div className="col-span-2">
@@ -47,13 +39,59 @@ const Film = () => {
                 squarely in the paths of multiple storm systems converging over
                 central Oklahoma in the fight of their lives.
               </p>
-              <div className="inline-flex space-x-3 text-sm text-green-400">
-                <p>cast</p>
-                <p>crew</p>
-                <p>details</p>
-                <p>genres</p>
-                <p>releases</p>
+              <div className="flex text-m text-green-500 w-full">
+                <Link
+                  to="/film/set"
+                  className={`border-b-2 ${
+                    location.pathname === `/film/${params.filmid}`
+                      ? "border-gray-200 text-gray-200"
+                      : "border-gray-600"
+                  } px-2 hover:border-gray-200 pb-[0.5px]`}
+                >
+                  cast
+                </Link>
+                <Link
+                  to="/film/set/crew"
+                  className={`border-b-2 ${
+                    location.pathname === `/film/${params.filmid}/crew`
+                      ? "border-gray-200 text-gray-200"
+                      : "border-gray-600"
+                  } px-2 hover:border-gray-200 pb-[0.5px]`}
+                >
+                  crew
+                </Link>
+                <Link
+                  to="/film/set/details"
+                  className={`border-b-2 ${
+                    location.pathname === `/film/${params.filmid}/details`
+                      ? "border-gray-200 text-gray-200"
+                      : "border-gray-600"
+                  } px-2 hover:border-gray-200 pb-[0.5px]`}
+                >
+                  details
+                </Link>
+                <Link
+                  to="/film/set/genre"
+                  className={`border-b-2 ${
+                    location.pathname === `/film/${params.filmid}/genre`
+                      ? "border-gray-200 text-gray-200"
+                      : "border-gray-600"
+                  } px-2 hover:border-gray-200 pb-[0.5px]`}
+                >
+                  genre
+                </Link>
+                <Link
+                  to="/film/set/releases"
+                  className={`border-b-2 ${
+                    location.pathname === `/film/${params.filmid}/releases`
+                      ? "border-gray-200 text-gray-200"
+                      : "border-gray-600"
+                  } px-2 hover:border-gray-200 pb-[0.5px] w-full`}
+                >
+                  releases
+                </Link>
               </div>
+              <Outlet />
             </div>
             <div className="col-span-1">
               <Button className="w-full">Sign in to review</Button>
