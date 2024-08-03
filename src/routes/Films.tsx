@@ -32,8 +32,6 @@ const FilmList = () => {
   for (let year = 1950; year <= 2020; year += 10) {
     decades.push(<MenubarItem key={year}>{`${year}s`}</MenubarItem>);
   }
-  const posterImage =
-    "https://a.ltrbxd.com/resized/film-poster/4/6/2/8/7/0/462870-deadpool-wolverine-0-230-0-345-crop.jpg";
 
   const ad =
     "https://a.ltrbxd.com/resized/sm/upload/44/gp/p4/ly/pro-950-0-950-0-0.jpg";

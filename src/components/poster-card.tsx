@@ -1,4 +1,4 @@
-import { Ellipsis, Eye, Grid2X2, Heart } from "lucide-react";
+import { Ellipsis, Eye, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export interface IPosterCard extends React.ImgHTMLAttributes<HTMLImageElement> {
