@@ -12,6 +12,7 @@ import Crew from "./routes/FIlm/Crew";
 import Cast from "./routes/FIlm/Cast";
 import Details from "./routes/FIlm/Details";
 import Genre from "./routes/FIlm/Genre";
+import { TooltipProvider } from "./components/ui/tooltip";
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,9 @@ function App() {
   return (
     <div className="">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <RouterProvider router={router} />
+        <TooltipProvider>
+          <RouterProvider router={router} />
+        </TooltipProvider>
       </ThemeProvider>
     </div>
   );
