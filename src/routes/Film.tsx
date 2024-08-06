@@ -3,23 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Link, useLocation, useParams, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FilmDetail, getFilm, IMG_BASE_URL } from "@/services/tmdb-service";
-import { useBackdrop } from "@/components/backdrop-provider";
 
 const Film = () => {
   const [film, setFilm] = useState<FilmDetail>();
-  const poster =
-    "https://a.ltrbxd.com/resized/film-poster/6/4/1/6/0/8/641608-twisters-0-1000-0-1500-crop.jpg";
 
   const location = useLocation();
   const { filmid } = useParams();
-  const { setBackdrop } = useBackdrop();
 
   useEffect(() => {
     const fetchFilmDetails = async () => {
       await getFilm(filmid!)
         .then((response) => {
           setFilm(response);
-          setBackdrop(response.backdrop_path);
         })
         .catch((err) => {
           console.log(err);
@@ -30,9 +25,16 @@ const Film = () => {
 
   const params = useParams();
   return (
-    <div className="px-4 lg:px-56 py-2 bg-black-pearl my-0">
+    <div className="px-4 lg:px-56 py-2 my-0">
+      <div
+        className="movie-backdrop absolute z-[-100] block w-full h-[500px] top-0 left-0 bg-center bg-no-repeat bg-cover animate-fade-in duration-700"
+        style={{
+          backgroundImage: `url(${IMG_BASE_URL}/original/${film?.backdrop_path})`,
+        }}
+      ></div>
+      <img src={film?.backdrop_path!} className="h-[300px] opacity-0" alt="" />
       <div className="grid grid-cols-3 gap-4 justify-items-center">
-        <div className="col-span-1 px-1">
+        <div className="col-span-1 px-1 sticky">
           <div className="flex flex-col mx-5">
             <img
               src={`${IMG_BASE_URL}/w780/${film?.poster_path}`}
@@ -45,7 +47,7 @@ const Film = () => {
           </div>
         </div>
         <div className="col-span-2">
-          <div className="flex flex-wrap items-center pb-4 space-y-2">
+          <div className="flex flex-wrap items-center pb-4 space-y-2 text-sh">
             <p className="text-4xl pr-2 font-headBold">
               {film?.original_title}
             </p>
@@ -68,7 +70,7 @@ const Film = () => {
                     location.pathname === `/film/${params.filmid}`
                       ? "border-gray-200 text-gray-200"
                       : "border-gray-600"
-                  } px-2 hover:border-gray-200 pb-[0.5px]`}
+                  } px-2 hover:border-green-500 pb-[0.5px]`}
                 >
                   cast
                 </Link>
@@ -78,7 +80,7 @@ const Film = () => {
                     location.pathname === `/film/${params.filmid}/crew`
                       ? "border-gray-200 text-gray-200"
                       : "border-gray-600"
-                  } px-2 hover:border-gray-200 pb-[0.5px]`}
+                  } px-2 hover:border-green-500 pb-[0.5px]`}
                 >
                   crew
                 </Link>
@@ -88,7 +90,7 @@ const Film = () => {
                     location.pathname === `/film/${params.filmid}/details`
                       ? "border-gray-200 text-gray-200"
                       : "border-gray-600"
-                  } px-2 hover:border-gray-200 pb-[0.5px]`}
+                  } px-2 hover:border-green-500 pb-[0.5px]`}
                 >
                   details
                 </Link>
@@ -98,7 +100,7 @@ const Film = () => {
                     location.pathname === `/film/${params.filmid}/genre`
                       ? "border-gray-200 text-gray-200"
                       : "border-gray-600"
-                  } px-2 hover:border-gray-200 pb-[0.5px]`}
+                  } px-2 hover:border-green-500 pb-[0.5px]`}
                 >
                   genre
                 </Link>
@@ -108,7 +110,7 @@ const Film = () => {
                     location.pathname === `/film/${params.filmid}/releases`
                       ? "border-gray-200 text-gray-200"
                       : "border-gray-600"
-                  } px-2 hover:border-gray-200 pb-[0.5px] w-full`}
+                  } px-2 hover:border-green-500 pb-[0.5px] w-full`}
                 >
                   releases
                 </Link>
