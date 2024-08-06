@@ -4,7 +4,7 @@ function Landing() {
   const splash =
     "https://a.ltrbxd.com/resized/sm/upload/6q/qu/l2/st/twisters-1200-1200-675-675-crop-000000.jpg";
   return (
-    <main className="px-4 lg:px-28">
+    <main className="px-4 lg:px-28 bg-black-pearl">
       <div className="flex justify-center pt-3">
         <Button className="bg-green-500 text-gray-50 hover:bg-green-700">
           Get Started — It's free!

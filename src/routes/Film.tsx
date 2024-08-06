@@ -1,47 +1,69 @@
 import Stats from "@/components/stats";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useParams, Outlet } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { FilmDetail, getFilm, IMG_BASE_URL } from "@/services/tmdb-service";
+import { useBackdrop } from "@/components/backdrop-provider";
+
 const Film = () => {
+  const [film, setFilm] = useState<FilmDetail>();
   const poster =
     "https://a.ltrbxd.com/resized/film-poster/6/4/1/6/0/8/641608-twisters-0-1000-0-1500-crop.jpg";
 
   const location = useLocation();
+  const { filmid } = useParams();
+  const { setBackdrop } = useBackdrop();
 
   useEffect(() => {
-    console.log(location.pathname);
+    const fetchFilmDetails = async () => {
+      await getFilm(filmid!)
+        .then((response) => {
+          setFilm(response);
+          setBackdrop(response.backdrop_path);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchFilmDetails();
   }, []);
+
   const params = useParams();
   return (
-    <div className="px-4 lg:px-32 py-2">
+    <div className="px-4 lg:px-56 py-2 bg-black-pearl my-0">
       <div className="grid grid-cols-3 gap-4 justify-items-center">
         <div className="col-span-1 px-1">
-          <div className="flex flex-col items-center">
-            <img src={poster} alt="" className="w-9/12 rounded-lg" />
-            <Stats watched={210} appears={50} liked={15} />
+          <div className="flex flex-col mx-5">
+            <img
+              src={`${IMG_BASE_URL}/w780/${film?.poster_path}`}
+              alt=""
+              className="rounded-lg"
+            />
+            <div className="flex justify-center">
+              <Stats watched={210} appears={50} liked={15} />
+            </div>
           </div>
         </div>
         <div className="col-span-2">
-          <div className="inline-flex items-center space-x-3 pb-3">
-            <p className="text-4xl font-headBold">Twisters</p>
-            <p className="underline">2024</p>
-            <p className="text-muted-foreground">Directed by</p>
-            <p className="underline">Lee Isaac Chung</p>
+          <div className="flex flex-wrap items-center pb-4 space-y-2">
+            <p className="text-4xl pr-2 font-headBold">
+              {film?.original_title}
+            </p>
+            <div className="flex space-x-2 text-lg">
+              <p className="underline">{film?.release_date.split("-")[0]}</p>
+              <p className="text-muted-foreground">Directed by</p>
+              <p className="underline">Lee Isaac Chung</p>
+            </div>
           </div>
           <div className="grid grid-cols-3 gap-4">
             <div className="col-span-2">
-              <p className="pb-2">chase. ride. survive</p>
+              <p className="pb-2">{film?.tagline}</p>
               <p className="pb-4 font-textRegular text-muted-foreground">
-                As storm season intensifies, the paths of former storm chaser
-                Kate Carter and reckless social-media superstar Tyler Owens
-                collide when terrifying phenomena never seen before are
-                unleashed. The pair and their competing teams find themselves
-                squarely in the paths of multiple storm systems converging over
-                central Oklahoma in the fight of their lives.
+                {film?.overview}
               </p>
               <div className="flex text-m text-green-500 w-full">
                 <Link
-                  to="/film/set"
+                  to={`/film/${filmid}`}
                   className={`border-b-2 ${
                     location.pathname === `/film/${params.filmid}`
                       ? "border-gray-200 text-gray-200"
@@ -51,7 +73,7 @@ const Film = () => {
                   cast
                 </Link>
                 <Link
-                  to="/film/set/crew"
+                  to={`/film/${filmid}/crew`}
                   className={`border-b-2 ${
                     location.pathname === `/film/${params.filmid}/crew`
                       ? "border-gray-200 text-gray-200"
@@ -61,7 +83,7 @@ const Film = () => {
                   crew
                 </Link>
                 <Link
-                  to="/film/set/details"
+                  to={`/film/${filmid}/details`}
                   className={`border-b-2 ${
                     location.pathname === `/film/${params.filmid}/details`
                       ? "border-gray-200 text-gray-200"
@@ -71,7 +93,7 @@ const Film = () => {
                   details
                 </Link>
                 <Link
-                  to="/film/set/genre"
+                  to={`/film/${filmid}/genre`}
                   className={`border-b-2 ${
                     location.pathname === `/film/${params.filmid}/genre`
                       ? "border-gray-200 text-gray-200"
@@ -81,7 +103,7 @@ const Film = () => {
                   genre
                 </Link>
                 <Link
-                  to="/film/set/releases"
+                  to={`/film/${filmid}/releases`}
                   className={`border-b-2 ${
                     location.pathname === `/film/${params.filmid}/releases`
                       ? "border-gray-200 text-gray-200"

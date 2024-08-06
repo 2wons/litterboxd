@@ -26,7 +26,7 @@ const PosterCard = ({
             {...props}
           />
           <div className="p-3 absolute transition-all duration-300 top-0 opacity-0 group-hover:opacity-100 w-full h-full bg-slate-800/55 border-gray-100 border-[2.5px] rounded-md">
-            <p className="font-extrabold drop-shadow-md">{`${name} (${
+            <p className="font-extrabold drop-shadow-md text-gray-100">{`${name} (${
               date.split("-")[0]
             })`}</p>
             <div className="absolute bottom-0 pb-2">
