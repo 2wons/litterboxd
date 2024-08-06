@@ -1,8 +1,6 @@
 import dotsLogo from "@/assets/letterboxd-dots-logo.png";
 import { Input } from "@/components/ui/input";
-import { getImages, IMG_BASE_URL } from "@/services/tmdb-service";
-import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useBackdrop } from "./backdrop-provider";
 

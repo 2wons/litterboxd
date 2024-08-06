@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
 
 function Landing() {
-  const splash =
-    "https://a.ltrbxd.com/resized/sm/upload/6q/qu/l2/st/twisters-1200-1200-675-675-crop-000000.jpg";
   return (
     <main className="px-4 lg:px-28 bg-black-pearl">
       <div className="flex justify-center pt-3">
