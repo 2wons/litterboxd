@@ -34,12 +34,12 @@ const Film = () => {
       ></div>
       <img src={film?.backdrop_path!} className="h-[300px] opacity-0" alt="" />
       <div className="grid grid-cols-3 gap-4 justify-items-center">
-        <div className="col-span-1 px-1 sticky">
-          <div className="flex flex-col mx-5">
+        <div className="col-span-1 px-1">
+          <div className="flex flex-col mx-5 sticky top-0 pt-1">
             <img
               src={`${IMG_BASE_URL}/w780/${film?.poster_path}`}
               alt=""
-              className="rounded-lg"
+              className="rounded-lg border-gray-500 border-2"
             />
             <div className="flex justify-center">
               <Stats watched={210} appears={50} liked={15} />
