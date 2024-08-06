@@ -8,9 +8,6 @@ const Header = () => {
   const { backdrop } = useBackdrop();
   const location = useLocation();
 
-  const splash =
-    "https://image.tmdb.org/t/p/original//2RVcJbWFmICRDsVxRI8F5xRmRsK.jpg";
-
   return (
     <div
       className={
@@ -20,11 +17,7 @@ const Header = () => {
       }
       style={{
         backgroundImage: `url(${
-          location.pathname === "/films"
-            ? ""
-            : location.pathname === "/"
-            ? splash
-            : backdrop
+          location.pathname === "/films" ? "" : backdrop
         })`,
       }}
     >
