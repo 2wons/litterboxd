@@ -24,7 +24,9 @@ const Header = () => {
             <Link to="/">
               <div className="flex flex-row items-center space-x-2">
                 <img src={dotsLogo} className="w-1/12 h-auto" alt="dots-logo" />
-                <h1 className="text-3xl font-logo">Letterboxd</h1>
+                <h1 className="text-3xl font-logo bg-gradient-to-b from-[#f5f5f5] to-[#dcdcdc] bg-clip-text text-transparent">
+                  Letterboxd
+                </h1>
               </div>
             </Link>
             <div className="flex flex-row justify-self-end items-center space-x-4 text-gray-200">
