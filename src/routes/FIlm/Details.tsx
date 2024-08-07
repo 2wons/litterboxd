@@ -1,28 +1,17 @@
-import Tag from "@/components/tag";
+import TagRow from "@/components/tag-row";
+import { FilmDetail } from "@/services/tmdb-service";
+import { useLocation } from "react-router-dom";
 
 const Details = () => {
-  // TODO: fetch details data from tmdb
+  const { state } = useLocation() as { state: FilmDetail };
   return (
     <div className="py-2">
-      <div className="flex space-x-1 items-start">
-        <p className="text-sm text-muted-foreground max-w-40 w-full flex-nowrap">
-          Studios
-        </p>
-        <div className="flex flex-wrap w-full">
-          <div className="pt-1 pr-1">
-            <Tag title="Universal Studios" />
-          </div>
-          <div className="pt-1 pr-1">
-            <Tag title="Warner Bros. Pictures" />
-          </div>
-          <div className="pt-1 pr-1">
-            <Tag title="Amblin Entertainment" />
-          </div>
-          <div className="pt-1 pr-1">
-            <Tag title="Domain Entertainment" />
-          </div>
-        </div>
-      </div>
+      <TagRow
+        label={"Studios"}
+        data={state.production_companies.map((studio) => studio.name)}
+      />
+      <TagRow label={"Country"} data={state.origin_country} />
+      <TagRow label={"Language"} data={[state.original_language]} />
     </div>
   );
 };

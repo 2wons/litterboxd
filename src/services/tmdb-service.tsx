@@ -7,74 +7,52 @@ const TOKEN =
 
 // TODO: image link builder
 
-export const getPopularFilms = async () => {
+export const tmdb = async (endpoint: string) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/3/movie/popular?languages=en-US&page=1`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${TOKEN}`,
-        },
-      }
-    );
+    const response = await fetch(`${BASE_URL}/3${endpoint}`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Response Status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const tmdbv2 = async <T,>(endpoint: string): Promise<T | void> => {
+  try {
+    const response = await fetch(`${BASE_URL}/3${endpoint}`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Error(`Response Status: ${response.status}`);
     }
 
-    const json = await response.json();
-    return json;
-  } catch (error: any) {
-    console.log(error.message);
+    const data: T = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
   }
+};
+
+export const getPopularFilms = async () => {
+  return await tmdb("/movie/popular?languages=en_US&page=1");
 };
 
 export const getFilm = async (film_id: string) => {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/3/movie/${film_id}?language=en-US`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          authorization: `Bearer ${TOKEN}`,
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(`Response Status ${response.status}`);
-    }
-
-    const json = await response.json();
-    console.log(json);
-    return json;
-  } catch (error: any) {
-    console.log(error.message);
-  }
-};
-
-export const getImages = async (film_id: string) => {
-  try {
-    const response = await fetch(`${BASE_URL}/3/movie/${film_id}/images`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        authorization: `Bearer ${TOKEN}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Response Status ${response.status}`);
-    }
-
-    const json = await response.json();
-    return json;
-  } catch (error: any) {
-    console.log(error.message);
-  }
+  return await tmdb(`/movie/${film_id}?language=en-US`);
 };
 
 type ImageQuery = {
@@ -85,6 +63,29 @@ type ImageQuery = {
   vote_average: number;
   vote_count: number;
   width: number;
+};
+
+export type Credit = {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order?: number;
+  department?: string;
+  job?: string;
+};
+
+export type CreditsResponse = {
+  id: number;
+  "cast": Credit[];
+  "crew": Credit[];
 };
 
 export type ImageResponse = {

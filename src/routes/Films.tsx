@@ -115,6 +115,7 @@ const FilmList = () => {
           <Carousel
             opts={{
               align: "start",
+              slidesToScroll: "auto",
             }}
           >
             <CarouselContent>

@@ -1,17 +1,41 @@
-import Tag from "@/components/tag";
+import TagRow from "@/components/tag-row";
+import { CreditsResponse, tmdbv2 } from "@/services/tmdb-service";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Crew = () => {
-  // TODO: fetch crew data from tmdb
+  const [crew, setCrew] = useState<Record<string, string[]>>({});
+  const { filmid } = useParams();
+
+  const groupCrewByRoles = (credits: CreditsResponse) => {
+    return credits.crew.reduce((acc: Record<string, string[]>, crewMember) => {
+      const { known_for_department, name } = crewMember;
+      if (!acc[known_for_department]) {
+        acc[known_for_department] = [];
+      }
+      acc[known_for_department].push(name);
+
+      return acc;
+    }, {});
+  };
+
+  useEffect(() => {
+    (async () => {
+      await tmdbv2<CreditsResponse>(`/movie/${filmid}/credits?language=en_US`)
+        .then((res) => {
+          const _crew = groupCrewByRoles(res!);
+          setCrew(_crew);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })();
+  }, []);
   return (
     <div className="py-2">
-      <div className="flex space-x-1 items-start">
-        <p className="text-sm text-muted-foreground max-w-40 w-full flex-nowrap">
-          Director
-        </p>
-        <div className="flex flex-wrap w-full">
-          <Tag title="Lee Isaac Chung" />
-        </div>
-      </div>
+      {Object.keys(crew).map((department) => (
+        <TagRow label={department} key={department} data={crew[department]} />
+      ))}
     </div>
   );
 };

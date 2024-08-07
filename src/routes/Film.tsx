@@ -25,15 +25,21 @@ const Film = () => {
 
   const params = useParams();
   return (
-    <div className="px-4 lg:px-56 py-2 my-0">
-      <div
-        className="movie-backdrop absolute z-[-100] block w-full h-[500px] top-0 left-0 bg-center bg-no-repeat bg-cover animate-fade-in duration-700"
-        style={{
-          backgroundImage: `url(${IMG_BASE_URL}/original/${film?.backdrop_path})`,
-        }}
-      ></div>
-      <img src={film?.backdrop_path!} className="h-[300px] opacity-0" alt="" />
-      <div className="grid grid-cols-3 gap-4 justify-items-center">
+    <div className="px-4 lg:px-48 py-2 my-0">
+      {film?.backdrop_path && (
+        <div
+          className="movie-backdrop right-0 sm:mx-28 absolute z-[-100] block sm:max-w-full sm:h-[500px] top-0 left-0 bg-center bg-no-repeat bg-cover animate-fade-in duration-700"
+          style={{
+            backgroundImage: `url(${IMG_BASE_URL}/original/${film?.backdrop_path})`,
+          }}
+        ></div>
+      )}
+      <img
+        src={film?.backdrop_path!}
+        className="sm:h-[350px] opacity-0"
+        alt=""
+      />
+      <div className="grid grid-cols-3 gap-5 justify-items-center">
         <div className="col-span-1 px-1">
           <div className="flex flex-col mx-5 sticky top-0 pt-1">
             <img
@@ -47,11 +53,11 @@ const Film = () => {
           </div>
         </div>
         <div className="col-span-2">
-          <div className="flex flex-wrap items-center pb-4 space-y-2 text-sh">
-            <p className="text-4xl pr-2 font-headBold">
+          <div className="flex flex-wrap items-end pb-4 space-y-2">
+            <h1 className="text-3xl pr-2 font-headBold">
               {film?.original_title}
-            </p>
-            <div className="flex space-x-2 text-lg">
+            </h1>
+            <div className="flex space-x-2 text-lg pb-2">
               <p className="underline">{film?.release_date.split("-")[0]}</p>
               <p className="text-muted-foreground">Directed by</p>
               <p className="underline">Lee Isaac Chung</p>
@@ -86,6 +92,7 @@ const Film = () => {
                 </Link>
                 <Link
                   to={`/film/${filmid}/details`}
+                  state={film}
                   className={`border-b-2 ${
                     location.pathname === `/film/${params.filmid}/details`
                       ? "border-gray-200 text-gray-200"
@@ -96,6 +103,7 @@ const Film = () => {
                 </Link>
                 <Link
                   to={`/film/${filmid}/genre`}
+                  state={film?.genres}
                   className={`border-b-2 ${
                     location.pathname === `/film/${params.filmid}/genre`
                       ? "border-gray-200 text-gray-200"
