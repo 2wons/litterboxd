@@ -42,7 +42,10 @@ const Header = () => {
               <a href="#" className="hover:text-foreground">
                 Lists
               </a>
-              <Input placeholder="search" className="rounded-2xl" />
+              <Input
+                placeholder="search"
+                className="rounded-3xl opacity-65 bg-gray-500 p-2 text-xs border-0 h-auto "
+              />
             </div>
           </div>
         </header>
