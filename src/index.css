@@ -77,16 +77,16 @@
   @font-face {
     font-family: 'Sharp-Grotesk';
     font-style: normal;
-    src: url("/src/assets/SharpGrotesk-SemiBold20.otf") format("opentype");
+    src: url("@/assets/SharpGrotesk-SemiBold20.otf") format("opentype");
   }
   @font-face {
     font-family: 'Tiempos-Head-Bold';
     font-style: normal;
-    src: url("/src/assets/Tiempos-Headline-Bold.otf") format("opentype");
+    src: url("@/assets/Tiempos-Headline-Bold.otf") format("opentype");
   }
   @font-face {
     font-family: 'Tiempos-Text-Regular';
     font-style: normal;
-    src: url("/src/assets/Tiempos-Text-Regular.otf") format("opentype");
+    src: url("@/assets/Tiempost-Text-Regular.otf") format("opentype");
   }
 }
