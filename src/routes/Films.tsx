@@ -22,6 +22,7 @@ import PosterCard from "@/components/poster-card";
 import Stats from "@/components/stats";
 import { useEffect, useState } from "react";
 import { Film, getPopularFilms, IMG_BASE_URL } from "@/services/tmdb-service";
+import { Link } from "react-router-dom";
 
 // 2c3440 #14181c
 
@@ -38,7 +39,7 @@ const FilmList = () => {
 
   useEffect(() => {
     const fetchPopular = async () => {
-      await getPopularFilms().then((response) => {
+      await getPopularFilms({}).then((response) => {
         setFilms(response.results);
       });
     };
@@ -105,9 +106,11 @@ const FilmList = () => {
           <Input placeholder="Find a Film" />
         </div>
       </div>
-      <div className="flex flex-row justify-between text-muted-foreground pt-3 pb-1 text-xs">
+      <div className="flex flex-row justify-between text-muted-foreground pt-3 pb-1 text-sm">
         <p>popular films this week</p>
-        <p>more</p>
+        <Link to="/films/popular" className="hover:text-sky-500">
+          more
+        </Link>
       </div>
       <hr />
       <div className="flex justify-center py-3">

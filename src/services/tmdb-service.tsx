@@ -1,11 +1,13 @@
 export const IMG_BASE_URL = "https://image.tmdb.org/t/p";
 const BASE_URL = "https://api.themoviedb.org";
-const TOKEN =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxOGEyZjFlNTgxYTI0NWYxM2NlYmUyMzQ2OTIyOWFlNCIsIm5iZiI6MTcyMjYwMjQwNS44NDc2NzQsInN1YiI6IjY2OWUwZDQ3Mjk2ZDkwYWYwOWE2ZjI1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kSd47mAfxgXSAOpqr44JXWN4AawSJqlltpVxCgjhfMk";
+const TOKEN = import.meta.env.VITE_TMDB_API_KEY;
 
 /* https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg */
 
 // TODO: image link builder
+export const image = (link: string) => {
+  return `${IMG_BASE_URL}/w300/${link}`;
+};
 
 export const tmdb = async (endpoint: string) => {
   try {
@@ -47,8 +49,8 @@ export const tmdbv2 = async <T,>(endpoint: string): Promise<T | void> => {
   }
 };
 
-export const getPopularFilms = async () => {
-  return await tmdb("/movie/popular?languages=en_US&page=1");
+export const getPopularFilms = async ({ page = "1" }: { page?: string }) => {
+  return await tmdb(`/movie/popular?languages=en_US&page=${page}`);
 };
 
 export const getFilm = async (film_id: string) => {
@@ -84,8 +86,8 @@ export type Credit = {
 
 export type CreditsResponse = {
   id: number;
-  "cast": Credit[];
-  "crew": Credit[];
+  cast: Credit[];
+  crew: Credit[];
 };
 
 export type ImageResponse = {

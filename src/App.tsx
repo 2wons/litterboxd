@@ -14,6 +14,7 @@ import Details from "./routes/FIlm/Details";
 import Genre from "./routes/FIlm/Genre";
 import { TooltipProvider } from "./components/ui/tooltip";
 import { BackdropProvider } from "./components/backdrop-provider";
+import Popular from "./routes/Popular";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: "films/",
         element: <FilmList />,
+      },
+      {
+        path: "films/popular",
+        element: <Popular />,
+      },
+      {
+        path: "films/popular/page/:pageno",
+        element: <Popular />,
       },
       {
         path: "film/:filmid",
@@ -64,9 +73,7 @@ function App() {
     <div className="">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <TooltipProvider>
-          <BackdropProvider>
-            <RouterProvider router={router} />
-          </BackdropProvider>
+          <RouterProvider router={router} />
         </TooltipProvider>
       </ThemeProvider>
     </div>

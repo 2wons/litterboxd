@@ -53,11 +53,11 @@ const Film = () => {
           </div>
         </div>
         <div className="col-span-2">
-          <div className="flex flex-wrap items-end pb-4 space-y-2">
+          <div className="flex flex-wrap pb-4 space-y-2">
             <h1 className="text-3xl pr-2 font-headBold">
               {film?.original_title}
             </h1>
-            <div className="flex space-x-2 text-lg pb-2">
+            <div className="flex space-x-2 text-lg pb-2 font-normal">
               <p className="underline">{film?.release_date.split("-")[0]}</p>
               <p className="text-muted-foreground">Directed by</p>
               <p className="underline">Lee Isaac Chung</p>
