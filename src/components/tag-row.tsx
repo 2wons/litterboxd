@@ -16,8 +16,8 @@ const TagRow = ({ label, data }: TagRowProps) => {
       </div>
       <div className="flex flex-wrap w-full">
         {data.map((info, index) => (
-          <div className="pt-1 pr-1">
-            <Tag title={info} key={index} />
+          <div key={index} className="pt-1 pr-1">
+            <Tag title={info} />
           </div>
         ))}
       </div>
