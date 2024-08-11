@@ -1,23 +1,10 @@
 import dotsLogo from "@/assets/letterboxd-dots-logo.png";
 import { Input } from "@/components/ui/input";
-import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useBackdrop } from "./backdrop-provider";
 
 const Header = () => {
-  const { backdrop } = useBackdrop();
-  const location = useLocation();
-  const splash =
-    "https://image.tmdb.org/t/p/original//2RVcJbWFmICRDsVxRI8F5xRmRsK.jpg";
-
   return (
     <>
-      {/* <div
-        className="movie-backdrop flex bg-center bg-no-repeat bg-cover animate-fade-in duration-700 absolute z-[-100] bg-black-pearl"
-        style={{
-          backgroundImage: `url(${splash})`,
-        }}
-      ></div> */}
       <nav>
         <header className="px-4 lg:px-52 pt-5 pb-2">
           <div className="flex flex-row justify-center items-center">
