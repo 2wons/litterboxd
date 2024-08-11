@@ -13,7 +13,6 @@ import Cast from "./routes/FIlm/Cast";
 import Details from "./routes/FIlm/Details";
 import Genre from "./routes/FIlm/Genre";
 import { TooltipProvider } from "./components/ui/tooltip";
-import { BackdropProvider } from "./components/backdrop-provider";
 import Popular from "./routes/Popular";
 
 const router = createBrowserRouter([
