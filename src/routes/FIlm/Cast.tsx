@@ -3,7 +3,7 @@ import { Tooltip, TooltipContent } from "@/components/ui/tooltip";
 import { Credit, CreditsResponse, tmdbv2 } from "@/services/tmdb-service";
 import { TooltipTrigger } from "@radix-ui/react-tooltip";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Cast = () => {
   const [cast, setCast] = useState<Credit[]>([]);
@@ -27,7 +27,9 @@ const Cast = () => {
         <Tooltip key={index}>
           <TooltipTrigger asChild>
             <div className="pt-1 pr-1">
-              <Tag href="#" title={cast.name} />
+              <Link to={`/actor/${cast.id}`}>
+                <Tag href="#" title={cast.name} />
+              </Link>
             </div>
           </TooltipTrigger>
           <TooltipContent>
