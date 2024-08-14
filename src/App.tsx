@@ -14,6 +14,7 @@ import Details from "./routes/FIlm/Details";
 import Genre from "./routes/FIlm/Genre";
 import { TooltipProvider } from "./components/ui/tooltip";
 import Popular from "./routes/Popular";
+import Actor from "./routes/Actor";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "films/popular/page/:pageno",
         element: <Popular />,
+      },
+      {
+        path: "actor/:actorid",
+        element: <Actor />,
       },
       {
         path: "film/:filmid",

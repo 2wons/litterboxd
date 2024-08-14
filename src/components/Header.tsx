@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <>
       <nav>
-        <header className="px-4 lg:px-52 pt-5 pb-2">
-          <div className="flex flex-row justify-center items-center">
+        <header className="px-4 lg:px-52">
+          <div className="flex flex-row justify-between items-center w-full py-6">
             <Link to="/">
               <div className="flex flex-row items-center space-x-2">
                 <img src={dotsLogo} className="w-1/12 h-auto" alt="dots-logo" />

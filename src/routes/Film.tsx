@@ -30,7 +30,7 @@ const Film = () => {
         <div
           className="movie-backdrop right-0 sm:mx-28 absolute z-[-100] block sm:max-w-full sm:h-[500px] top-0 left-0 bg-center bg-no-repeat bg-cover animate-fade-in duration-700"
           style={{
-            backgroundImage: `url(${IMG_BASE_URL}/original/${film?.backdrop_path})`,
+            backgroundImage: `url(${IMG_BASE_URL}/w1280/${film?.backdrop_path})`,
           }}
         ></div>
       )}
