@@ -14,10 +14,10 @@ interface PosterGalleryProps {
   films: PictureProps[];
 }
 
-const PosterGallery = ({ films, minWidth = 150 }: PosterGalleryProps) => {
+const PosterGallery = ({ films }: PosterGalleryProps) => {
   return (
     <section
-      className={`grid grid-cols-[repeat(auto-fill,minmax(${minWidth}px,1fr))] gap-1`}
+      className={`grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-1`}
     >
       {films
         .sort((a, b) => b.popularity - a.popularity)
