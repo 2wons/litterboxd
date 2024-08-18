@@ -35,6 +35,7 @@ const Film = () => {
         ></div>
       )}
       <img
+        rel="preload"
         src={film?.backdrop_path!}
         className="sm:h-[350px] opacity-0"
         alt=""

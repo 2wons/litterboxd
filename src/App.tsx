@@ -15,6 +15,7 @@ import Genre from "./routes/FIlm/Genre";
 import { TooltipProvider } from "./components/ui/tooltip";
 import Popular from "./routes/Popular";
 import Actor from "./routes/Actor";
+import Search from "./routes/Search";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "actor/:actorid",
         element: <Actor />,
+      },
+      {
+        path: "search/:keyword",
+        element: <Search />,
       },
       {
         path: "film/:filmid",
