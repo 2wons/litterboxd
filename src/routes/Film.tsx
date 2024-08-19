@@ -2,19 +2,33 @@ import Stats from "@/components/stats";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useParams, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { FilmDetail, getFilm, IMG_BASE_URL } from "@/services/tmdb-service";
+import {
+  Credit,
+  FilmDetail,
+  getFilm,
+  IMG_BASE_URL,
+} from "@/services/tmdb-service";
 
 const Film = () => {
   const [film, setFilm] = useState<FilmDetail>();
+  const [directors, setDirectors] = useState<Credit[]>();
 
   const location = useLocation();
   const { filmid } = useParams();
+
+  const filterDirectors = (data: FilmDetail) => {
+    const directors = data.credits.crew.filter(
+      (crew) => crew.job === "Director"
+    );
+    setDirectors(directors);
+  };
 
   useEffect(() => {
     const fetchFilmDetails = async () => {
       await getFilm(filmid!)
         .then((response) => {
-          setFilm(response);
+          setFilm(response!);
+          filterDirectors(response!);
         })
         .catch((err) => {
           console.log(err);
@@ -61,7 +75,12 @@ const Film = () => {
             <div className="flex space-x-2 text-lg pb-2 font-normal">
               <p className="underline">{film?.release_date.split("-")[0]}</p>
               <p className="text-muted-foreground">Directed by</p>
-              <p className="underline">Lee Isaac Chung</p>
+              {directors?.map((director, index) => (
+                <p className="underline">
+                  {director.name}
+                  {index + 1 < directors.length ? ", " : ""}
+                </p>
+              ))}
             </div>
           </div>
           <div className="grid grid-cols-3 gap-4">

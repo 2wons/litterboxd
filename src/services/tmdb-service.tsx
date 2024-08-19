@@ -2,9 +2,6 @@ export const IMG_BASE_URL = "https://image.tmdb.org/t/p";
 const BASE_URL = "https://api.themoviedb.org";
 const TOKEN = import.meta.env.VITE_TMDB_API_KEY;
 
-/* https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg */
-
-// TODO: image link builder
 export const image = (link: string) => {
   return `${IMG_BASE_URL}/w300/${link}`;
 };
@@ -54,17 +51,9 @@ export const getPopularFilms = async ({ page = "1" }: { page?: string }) => {
 };
 
 export const getFilm = async (film_id: string) => {
-  return await tmdb(`/movie/${film_id}?language=en-US`);
-};
-
-type ImageQuery = {
-  aspect_ration: string;
-  height: number;
-  iso_639_1: null | string;
-  file_path: string;
-  vote_average: number;
-  vote_count: number;
-  width: number;
+  return await tmdbv2<FilmDetail>(
+    `/movie/${film_id}?language=en-US&append_to_response=credits`
+  );
 };
 
 export type Credit = {
@@ -88,11 +77,6 @@ export type CreditsResponse = {
   id: number;
   cast: Credit[];
   crew: Credit[];
-};
-
-export type ImageResponse = {
-  backdrops: Array<ImageQuery>;
-  poster: Array<ImageQuery>;
 };
 
 export interface Film {
@@ -162,4 +146,8 @@ export interface FilmDetail {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  credits: {
+    cast: Credit[];
+    crew: Credit[];
+  };
 }
