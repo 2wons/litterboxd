@@ -63,7 +63,7 @@ const Film = () => {
               className="rounded-lg border-gray-500 border-2"
             />
             <div className="flex justify-center">
-              <Stats watched={210} appears={50} liked={15} />
+              <Stats watched={210} appears={50} liked={15} size="sm" />
             </div>
           </div>
         </div>
