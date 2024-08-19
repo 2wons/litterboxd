@@ -43,7 +43,7 @@ const Pagination = (props: PaginationProps) => {
   return (
     <div className="flex py-2 justify-between items-center text-muted-foreground">
       <Link
-        to={props.nextTo}
+        to={props.prevTo}
         className={`p-2 px-3 rounded-sm text-xs bg-[#283038] ${
           props.currentPage <= 1 ? "opacity-0 pointer-events-none" : ""
         }`}
@@ -55,7 +55,9 @@ const Pagination = (props: PaginationProps) => {
           <Link
             key={index}
             to={props.jumpTo(index + 1)}
-            className="p-2 hover:bg-gray-700"
+            className={`p-2 hover:bg-gray-700 ${
+              index + 1 === props.currentPage ? "text-gray-600" : null
+            }`}
           >
             {index + 1}
           </Link>
