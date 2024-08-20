@@ -65,11 +65,11 @@ const Actor = () => {
   }, []);
   return (
     <Container>
-      <div className="grid grid-cols-3 gap-20">
+      <div className="sm:grid grid-cols-3 gap-20">
         <div className="col-span-2">
-          <p className="text-muted-foreground text-lg">Films Starring</p>
+          <p className="text-muted-foreground text-md">Films Starring</p>
           <h1 className="font-bold text-2xl pb-5">{person?.name}</h1>
-          <div className="flex border-y-2 border-gray-700 p-2 justify-between text-muted-foreground mb-3">
+          <div className="flex border-y-2 border-gray-700 p-1.5 justify-between text-muted-foreground text-sm mb-3">
             <p>Actor</p>
             <div className="inline-flex space-x-2">
               <p>decade</p>
@@ -82,11 +82,11 @@ const Actor = () => {
             minWidth={150}
           />
         </div>
-        <div className="justify-end px-5">
+        <div className="flex sm:flex-col sm:w-full py-8 sm:py-0 space-x-5 sm:space-x-0">
           <img
             src={image(person?.profile_path!)}
             alt="actor_pic"
-            className="rounded-lg w-full"
+            className="rounded-lg w-1/3 sm:w-auto"
           />
           <p className="text-muted-foreground text-sm py-2">
             {person?.biography}
