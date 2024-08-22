@@ -1,5 +1,4 @@
 import Stats from "@/components/stats";
-import { Button } from "@/components/ui/button";
 import { Link, useLocation, useParams, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -8,6 +7,8 @@ import {
   getFilm,
   IMG_BASE_URL,
 } from "@/services/tmdb-service";
+import { TvMinimalPlay } from "lucide-react";
+import InteractionCard from "@/components/interaction-card";
 
 const Film = () => {
   const [film, setFilm] = useState<FilmDetail>();
@@ -39,7 +40,7 @@ const Film = () => {
 
   const params = useParams();
   return (
-    <div className="px-4 lg:px-48 py-2 my-0">
+    <div className="px-4 lg:px-56 py-2 my-0">
       {film?.backdrop_path && (
         <div
           className="movie-backdrop right-0 sm:mx-28 absolute z-[-100] block max-w-full h-[500px] top-0 left-0 bg-center bg-no-repeat bg-cover animate-fade-in duration-700"
@@ -54,22 +55,39 @@ const Film = () => {
         className="h-[250px] sm:h-[350px] opacity-0"
         alt=""
       />
-      <div className="sm:grid grid-cols-3 sm:gap-5 justify-items-center">
-        <div className="col-span-1 px-1">
-          <div className="sm:flex flex-col mx-3 sm:mx-5 sticky top-0 pt-1 pb-3 float-right w-1/4 sm:w-auto sm:float-none">
-            <img
-              src={`${IMG_BASE_URL}/w780/${film?.poster_path}`}
-              alt=""
-              className="rounded-lg border-gray-500 border-2 w-full"
-            />
-            <div className="hidden sm:flex justify-center">
+      <div className="sm:grid grid-cols-4 sm:gap-8 justify-items-center">
+        <div className="col-span-1 place-items-center">
+          <div className="sm:flex flex-col mx-2 sm:mx-1 sticky top-0 pt-1 pb-3 float-right w-1/4 sm:w-full sm:float-none">
+            <div className="drop-shadow-2xl">
+              <img
+                src={`${IMG_BASE_URL}/w780/${film?.poster_path}`}
+                alt=""
+                className="rounded-lg w-full drop-shadow-[0_35px_35px_rgba(0,0,0,0.55)] border-[1px] border-gray-50 border-opacity-15"
+              />
+            </div>
+            <div className="hidden sm:flex justify-center z-100">
               <Stats watched={210} appears={50} liked={15} size="sm" />
+            </div>
+            <div className="hidden sm:block border-[1px] border-gray-50 border-opacity-15 mt-4 rounded-sm text-muted-foreground">
+              <div className="flex justify-between bg-[#242c34] p-2 text-xs items-center">
+                <p>where to watch</p>
+                <div className="flex space-x-1 items-center">
+                  <TvMinimalPlay size={18} />
+                  <p>Trailer</p>
+                </div>
+              </div>
+              <div className="p-2 ml-2 text-xs border-b-[1px] border-gray-50 border-opacity-15">
+                <p>Not streaming.</p>
+              </div>
+              <div className="p-2 ml-2 text-xs">
+                <p className="text-sky-500">All services...</p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="sm:col-span-2">
+        <div className="sm:col-span-3 px-2">
           <div className="flex flex-wrap pb-4 space-y-2">
-            <h1 className="text-3xl pr-2 font-headBold">
+            <h1 className="text-3xl pr-2 font-headBold [text-shadow:_0_4px_5px_rgba(0,0,0,0.95)]">
               {film?.original_title}
             </h1>
             <div className="flex flex-wrap space-x-2 text-lg pb-2 font-normal">
@@ -83,10 +101,10 @@ const Film = () => {
               ))}
             </div>
           </div>
-          <div className="sm:grid grid-cols-3 gap-4">
-            <div className="col-span-2">
+          <div className="sm:grid grid-cols-5 gap-10">
+            <div className="col-span-3">
               <p className="pb-2">{film?.tagline}</p>
-              <p className="pb-4 font-textRegular text-muted-foreground">
+              <p className="pb-4 font-textRegular text-sm sm:text-base text-muted-foreground">
                 {film?.overview}
               </p>
               <div className="flex text-m text-green-500 w-full">
@@ -145,13 +163,8 @@ const Film = () => {
               </div>
               <Outlet />
             </div>
-            <div className="col-span-1">
-              <Button className="w-full">Sign in to review</Button>
-              <div className="pb-1" />
-              <Button className="w-full">Share</Button>
-              <div className="pb-3" />
-              <p className="text-xs text-muted-foreground">ratings</p>
-              <hr />
+            <div className="col-span-2 px-2">
+              <InteractionCard />
             </div>
           </div>
         </div>

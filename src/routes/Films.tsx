@@ -47,7 +47,7 @@ const FilmList = () => {
   }, []);
   return (
     <div className="px-4 lg:px-52 items-center py-2 pt-10 bg-gradient-to-b from-[#1e242c] to-[#14181c]">
-      <div className="flex flex-row space-x-3 items-center">
+      <div className="sm:flex flex-row space-y-1 sm:space-y-0 sm:space-x-3 items-center">
         <p className="text-muted-foreground min-w-max">Browse by</p>
         <Menubar>
           <MenubarMenu>
@@ -149,13 +149,13 @@ const FilmList = () => {
         <p>2,100,509,010 films watched</p>
       </div>
       <hr />
-      <div className="flex shrink flex-nowrap space-x-1 py-2">
+      <div className="flex shrink flex-nowrap overflow-hidden space-x-1 py-2">
         {Array.from({ length: 12 }).map((_, index) => (
           <img
             key={index}
             src="https://a.ltrbxd.com/resized/film-poster/6/4/1/6/0/8/641608-twisters-0-70-0-105-crop.jpg"
             alt="small-poster"
-            className="rounded-sm basis-1/12"
+            className="rounded-sm basis-1/5 sm:basis-1/12"
           />
         ))}
       </div>

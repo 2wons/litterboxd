@@ -28,7 +28,10 @@ const Header = () => {
             </div>
           </div>
           {open ? (
-            <div className="sm:hidden flex flex-col items-center bg-[#14181c] text-muted-foreground p-3 rounded-b-md space-y-2 bg-popover animate-in fade-in zoom-in-95 slide-in-from-top-2">
+            <div
+              onBlur={() => setOpen(!open)}
+              className="sm:hidden flex flex-col items-center bg-[#14181c] text-muted-foreground p-3 rounded-b-md space-y-2 animate-in fade-in zoom-in-95 slide-in-from-top-2"
+            >
               <NavLinks />
             </div>
           ) : null}

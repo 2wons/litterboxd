@@ -8,11 +8,11 @@ type TagRowProps = {
 const TagRow = ({ label, data }: TagRowProps) => {
   return (
     <div className="flex space-x-2 pt-2 items-start">
-      <div className="flex w-full items-end max-w-40 justify-start">
+      <div className="flex w-full items-end max-w-28 justify-start">
         <p className="text-sm text-muted-foreground flex-nowrap pr-1">
           {label}
         </p>
-        <p className="text-sm text-muted-foreground max-w-40 w-full flex-nowrap border-b-2 border-dotted border"></p>
+        <p className="text-sm text-muted-foreground max-w-28 w-full flex-nowrap border-b-2 border-dotted border"></p>
       </div>
       <div className="flex flex-wrap w-full">
         {data.map((info, index) => (
