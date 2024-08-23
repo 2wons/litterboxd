@@ -47,7 +47,7 @@ const FilmList = () => {
   }, []);
   return (
     <div className="px-4 lg:px-52 items-center py-2 pt-10 bg-gradient-to-b from-[#1e242c] to-[#14181c]">
-      <div className="sm:flex flex-row space-y-1 sm:space-y-0 sm:space-x-3 items-center">
+      <div className="md:flex flex-row space-y-1 md:space-y-0 md:space-x-3 items-center">
         <p className="text-muted-foreground min-w-max">Browse by</p>
         <Menubar>
           <MenubarMenu>
