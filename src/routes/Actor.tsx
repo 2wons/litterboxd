@@ -82,13 +82,13 @@ const Actor = () => {
             minWidth={150}
           />
         </div>
-        <div className="flex sm:flex-col sm:w-full py-8 sm:py-0 space-x-5 sm:space-x-0">
+        <div className="flex sm:flex-col sm:w-full py-8 sm:py-0 space-x-5 sm:space-x-0 items-start">
           <img
             src={image(person?.profile_path!)}
             alt="actor_pic"
             className="rounded-lg w-1/3 sm:w-auto object-scale-down"
           />
-          <p className="text-muted-foreground text-sm py-2">
+          <p className="text-muted-foreground text-sm sm:py-2">
             {person?.biography}
           </p>
         </div>
