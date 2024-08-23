@@ -1,6 +1,7 @@
 import Tag from "@/components/tag";
 import { Tooltip, TooltipContent } from "@/components/ui/tooltip";
-import { Credit, CreditsResponse, tmdb } from "@/services/tmdb-service";
+import { tmdb } from "@/services/tmdb-service";
+import { Credit, CreditsResponse } from "@/services/schema";
 import { TooltipTrigger } from "@radix-ui/react-tooltip";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";

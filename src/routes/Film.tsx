@@ -1,12 +1,8 @@
 import Stats from "@/components/stats";
 import { Link, useLocation, useParams, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {
-  Credit,
-  FilmDetail,
-  getFilm,
-  IMG_BASE_URL,
-} from "@/services/tmdb-service";
+import { getFilm, IMG_BASE_URL } from "@/services/tmdb-service";
+import { Credit, FilmDetail } from "@/services/schema";
 import { TvMinimalPlay } from "lucide-react";
 import InteractionCard from "@/components/interaction-card";
 

@@ -21,7 +21,8 @@ import {
 import PosterCard from "@/components/poster-card";
 import Stats from "@/components/stats";
 import { useEffect, useState } from "react";
-import { Film, getPopularFilms, IMG_BASE_URL } from "@/services/tmdb-service";
+import { getPopularFilms, IMG_BASE_URL } from "@/services/tmdb-service";
+import { Film } from "@/services/schema";
 import { Link } from "react-router-dom";
 
 // 2c3440 #14181c

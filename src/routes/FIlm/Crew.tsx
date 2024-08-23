@@ -1,5 +1,6 @@
 import TagRow from "@/components/tag-row";
-import { CreditsResponse, tmdb } from "@/services/tmdb-service";
+import { tmdb } from "@/services/tmdb-service";
+import { CreditsResponse } from "@/services/schema";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 

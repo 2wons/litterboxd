@@ -2,7 +2,8 @@ import { Container } from "@/components/container";
 import Pagination from "@/components/pagination";
 import ResultCard from "@/components/result-card";
 import SectionHeading from "@/components/section-heading";
-import { Film, tmdb } from "@/services/tmdb-service";
+import { tmdb } from "@/services/tmdb-service";
+import { Film } from "@/services/schema";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
