@@ -86,7 +86,7 @@ const Actor = () => {
           <img
             src={image(person?.profile_path!)}
             alt="actor_pic"
-            className="rounded-lg w-1/3 sm:w-auto"
+            className="rounded-lg w-1/3 sm:w-auto object-scale-down"
           />
           <p className="text-muted-foreground text-sm py-2">
             {person?.biography}
