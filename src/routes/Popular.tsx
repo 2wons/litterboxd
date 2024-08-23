@@ -19,8 +19,8 @@ const Popular = () => {
       setLoading(true);
       await getPopularFilms({ page: page })
         .then((res) => {
-          setFilms(res.results);
-          setFilmCount(res.total_pages);
+          setFilms(res!.results);
+          setFilmCount(res!.total_pages);
         })
         .catch((error) => {
           console.log(error);
