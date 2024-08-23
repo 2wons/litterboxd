@@ -1,12 +1,8 @@
 import Stats from "@/components/stats";
 import { Link, useLocation, useParams, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {
-  Credit,
-  FilmDetail,
-  getFilm,
-  IMG_BASE_URL,
-} from "@/services/tmdb-service";
+import { getFilm, IMG_BASE_URL } from "@/services/tmdb-service";
+import { Credit, FilmDetail } from "@/services/schema";
 import { TvMinimalPlay } from "lucide-react";
 import InteractionCard from "@/components/interaction-card";
 
@@ -40,7 +36,7 @@ const Film = () => {
 
   const params = useParams();
   return (
-    <div className="px-4 lg:px-56 py-2 my-0">
+    <div className="px-4 xl:px-56 py-2 my-0">
       {film?.backdrop_path && (
         <div
           className="movie-backdrop right-0 sm:mx-28 absolute z-[-100] block max-w-full h-[500px] top-0 left-0 bg-center bg-no-repeat bg-cover animate-fade-in duration-700"
@@ -101,7 +97,7 @@ const Film = () => {
               ))}
             </div>
           </div>
-          <div className="sm:grid grid-cols-5 gap-10">
+          <div className="md:grid grid-cols-5 gap-10">
             <div className="col-span-3">
               <p className="pb-2">{film?.tagline}</p>
               <p className="pb-4 font-textRegular text-sm sm:text-base text-muted-foreground">

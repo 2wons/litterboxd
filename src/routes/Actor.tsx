@@ -1,6 +1,6 @@
 import { Container } from "@/components/container";
 import PosterGallery from "@/components/poster-gallery";
-import { image, tmdbv2 } from "@/services/tmdb-service";
+import { image, tmdb } from "@/services/tmdb-service";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -52,7 +52,7 @@ const Actor = () => {
 
   useEffect(() => {
     (async () => {
-      await tmdbv2<PersonResponse>(
+      await tmdb<PersonResponse>(
         `/person/${actorid}?language=en-US&append_to_response=movie_credits`
       )
         .then((res) => {
@@ -65,7 +65,7 @@ const Actor = () => {
   }, []);
   return (
     <Container>
-      <div className="sm:grid grid-cols-3 gap-20">
+      <div className="md:grid grid-cols-3 gap-10">
         <div className="col-span-2">
           <p className="text-muted-foreground text-md">Films Starring</p>
           <h1 className="font-bold text-2xl pb-5">{person?.name}</h1>
@@ -82,13 +82,13 @@ const Actor = () => {
             minWidth={150}
           />
         </div>
-        <div className="flex sm:flex-col sm:w-full py-8 sm:py-0 space-x-5 sm:space-x-0">
+        <div className="flex md:flex-col md:w-full py-8 md:py-0 space-x-5 md:space-x-0 items-start">
           <img
             src={image(person?.profile_path!)}
             alt="actor_pic"
-            className="rounded-lg w-1/3 sm:w-auto"
+            className="rounded-lg w-1/3 md:w-auto object-scale-down"
           />
-          <p className="text-muted-foreground text-sm py-2">
+          <p className="text-muted-foreground text-sm md:py-2">
             {person?.biography}
           </p>
         </div>

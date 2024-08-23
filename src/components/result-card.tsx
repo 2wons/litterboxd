@@ -1,4 +1,5 @@
-import { Film, image } from "@/services/tmdb-service";
+import { image } from "@/services/tmdb-service";
+import { Film } from "@/services/schema";
 import { Link } from "react-router-dom";
 
 type ResultCardProps = {

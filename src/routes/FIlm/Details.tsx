@@ -1,5 +1,5 @@
 import TagRow from "@/components/tag-row";
-import { FilmDetail } from "@/services/tmdb-service";
+import { FilmDetail } from "@/services/schema";
 import { useLocation } from "react-router-dom";
 
 const Details = () => {

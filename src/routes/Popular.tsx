@@ -1,6 +1,7 @@
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
-import { Film, getPopularFilms } from "@/services/tmdb-service";
+import { getPopularFilms } from "@/services/tmdb-service";
+import { Film } from "@/services/schema";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { LoaderCircle } from "lucide-react";
@@ -18,8 +19,8 @@ const Popular = () => {
       setLoading(true);
       await getPopularFilms({ page: page })
         .then((res) => {
-          setFilms(res.results);
-          setFilmCount(res.total_pages);
+          setFilms(res!.results);
+          setFilmCount(res!.total_pages);
         })
         .catch((error) => {
           console.log(error);

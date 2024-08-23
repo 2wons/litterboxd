@@ -1,5 +1,6 @@
 import TagRow from "@/components/tag-row";
-import { CreditsResponse, tmdbv2 } from "@/services/tmdb-service";
+import { tmdb } from "@/services/tmdb-service";
+import { CreditsResponse } from "@/services/schema";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -21,7 +22,7 @@ const Crew = () => {
 
   useEffect(() => {
     (async () => {
-      await tmdbv2<CreditsResponse>(`/movie/${filmid}/credits?language=en_US`)
+      await tmdb<CreditsResponse>(`/movie/${filmid}/credits?language=en_US`)
         .then((res) => {
           const _crew = groupCrewByRoles(res!);
           setCrew(_crew);
