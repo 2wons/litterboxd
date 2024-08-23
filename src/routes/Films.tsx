@@ -40,7 +40,7 @@ const FilmList = () => {
   useEffect(() => {
     const fetchPopular = async () => {
       await getPopularFilms({}).then((response) => {
-        setFilms(response.results);
+        setFilms(response!.results);
       });
     };
     fetchPopular();

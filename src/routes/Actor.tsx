@@ -1,6 +1,6 @@
 import { Container } from "@/components/container";
 import PosterGallery from "@/components/poster-gallery";
-import { image, tmdbv2 } from "@/services/tmdb-service";
+import { image, tmdb } from "@/services/tmdb-service";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -52,7 +52,7 @@ const Actor = () => {
 
   useEffect(() => {
     (async () => {
-      await tmdbv2<PersonResponse>(
+      await tmdb<PersonResponse>(
         `/person/${actorid}?language=en-US&append_to_response=movie_credits`
       )
         .then((res) => {

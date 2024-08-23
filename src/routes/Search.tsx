@@ -2,7 +2,7 @@ import { Container } from "@/components/container";
 import Pagination from "@/components/pagination";
 import ResultCard from "@/components/result-card";
 import SectionHeading from "@/components/section-heading";
-import { Film, tmdbv2 } from "@/services/tmdb-service";
+import { Film, tmdb } from "@/services/tmdb-service";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const Search = () => {
 
   useEffect(() => {
     (async () => {
-      await tmdbv2<SearchResponse>(
+      await tmdb<SearchResponse>(
         `/search/movie?query=${keyword}&language=en-US&page=${page}`
       ).then((response) => {
         setFilms(response!.results);

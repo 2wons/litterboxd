@@ -1,6 +1,6 @@
 import Tag from "@/components/tag";
 import { Tooltip, TooltipContent } from "@/components/ui/tooltip";
-import { Credit, CreditsResponse, tmdbv2 } from "@/services/tmdb-service";
+import { Credit, CreditsResponse, tmdb } from "@/services/tmdb-service";
 import { TooltipTrigger } from "@radix-ui/react-tooltip";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -11,7 +11,7 @@ const Cast = () => {
 
   useEffect(() => {
     (async () => {
-      await tmdbv2<CreditsResponse>(`/movie/${filmid}/credits?language=en_US`)
+      await tmdb<CreditsResponse>(`/movie/${filmid}/credits?language=en_US`)
         .then((res) => {
           setCast(res!.cast);
         })

@@ -6,26 +6,7 @@ export const image = (link: string) => {
   return `${IMG_BASE_URL}/w300/${link}`;
 };
 
-export const tmdb = async (endpoint: string) => {
-  try {
-    const response = await fetch(`${BASE_URL}/3${endpoint}`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${TOKEN}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Response Status: ${response.status}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const tmdbv2 = async <T,>(endpoint: string): Promise<T | void> => {
+export const tmdb = async <T,>(endpoint: string): Promise<T | void> => {
   try {
     const response = await fetch(`${BASE_URL}/3${endpoint}`, {
       method: "GET",
@@ -47,13 +28,22 @@ export const tmdbv2 = async <T,>(endpoint: string): Promise<T | void> => {
 };
 
 export const getPopularFilms = async ({ page = "1" }: { page?: string }) => {
-  return await tmdb(`/movie/popular?languages=en_US&page=${page}`);
+  return await tmdb<PaginatedResponse>(
+    `/movie/popular?languages=en_US&page=${page}`
+  );
 };
 
 export const getFilm = async (film_id: string) => {
-  return await tmdbv2<FilmDetail>(
+  return await tmdb<FilmDetail>(
     `/movie/${film_id}?language=en-US&append_to_response=credits`
   );
+};
+
+export type PaginatedResponse = {
+  page: number;
+  results: Film[];
+  total_pages: number;
+  total_results: number;
 };
 
 export type Credit = {
@@ -151,3 +141,43 @@ export interface FilmDetail {
     crew: Credit[];
   };
 }
+
+type MovieCredits = {
+  cast: Array<{
+    adult: boolean;
+    backdrop_path: string;
+    genre_ids: number[];
+    id: number;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    popularity: number;
+    poster_path: string;
+    release_date: string;
+    title: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+    character: string;
+    credit_id: string;
+    order: number;
+    media_type: string;
+  }>;
+};
+export type PersonResponse = {
+  adult: boolean;
+  also_known_as: string[];
+  biography: string;
+  birthday: string;
+  deathday: string | null;
+  gender: number;
+  homepage: string | null;
+  id: number;
+  imdb_id: string;
+  known_for_department: string;
+  name: string;
+  place_of_birth: string;
+  popularity: number;
+  profile_path: string;
+  movie_credits: MovieCredits;
+};
