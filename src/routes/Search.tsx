@@ -17,7 +17,7 @@ const Search = () => {
 
   const page = searchParams.get("page") || "1";
 
-  const jumpToPage = (page: number) => {
+  const handlePagechange = (page: number) => {
     return `/search/${keyword}?page=${page}`;
   };
 
@@ -44,9 +44,7 @@ const Search = () => {
             <ResultCard film={film} key={film.id} />
           ))}
           <Pagination
-            nextTo={`/search/${keyword}/?page=${Number(page) + 1}`}
-            prevTo={`/search/${keyword}/?page=${Number(page) - 1}`}
-            jumpTo={jumpToPage}
+            onPageChange={handlePagechange}
             totalPages={totalPages}
             currentPage={Number(page)}
           />
