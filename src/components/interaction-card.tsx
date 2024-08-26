@@ -1,23 +1,15 @@
 import { CalendarPlus, Eye, Heart, Star } from "lucide-react";
 import SectionHeading from "./section-heading";
+import ActionButton from "./action-button";
 
 const InteractionCard = () => {
   return (
     <>
       <div className="bg-[#445566] rounded-sm max-w-60 text-[#bbccdd]">
         <div className="p-3 flex justify-between text-sm">
-          <span className="flex flex-col items-center">
-            <Eye size={38} strokeWidth={1.1} />
-            <p>Watch</p>
-          </span>
-          <span className="flex flex-col items-center">
-            <Heart size={38} strokeWidth={1.1} />
-            <p>Like</p>
-          </span>
-          <span className="flex flex-col items-center">
-            <CalendarPlus size={38} strokeWidth={1.1} />
-            <p>Watchlist</p>
-          </span>
+          <ActionButton Icon={Eye} label="Watch" fill="#22c55e" />
+          <ActionButton Icon={Heart} label="Like" fill="#f231a5" />
+          <ActionButton Icon={CalendarPlus} label="Watchlist" fill="#0ea5e9" />
         </div>
         <Separator />
         <div className="p-3 flex flex-col items-center text-xs space-y-1">
@@ -56,7 +48,7 @@ const InteractionCard = () => {
         </div>
         <Separator />
         <div className="p-3 text-center text-xs">
-          <p>Review or log...</p>
+          <button>Review or log...</button>
         </div>
         <Separator />
         <div className="p-3 text-center text-xs">
