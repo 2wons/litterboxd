@@ -21,7 +21,7 @@ const Stats = ({ watched, appears, liked, size = "xs" }: Stats) => {
         <p>{appears}k</p>
       </div>
       <div className="flex space-x-[0.5px] items-center">
-        <Heart size={14} className="text-orange-500" />
+        <Heart size={14} className="text-orange-500" fill="#f97316" />
         <p>{liked}k</p>
       </div>
     </div>
