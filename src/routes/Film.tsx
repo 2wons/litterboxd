@@ -90,7 +90,7 @@ const Film = () => {
               <p className="underline">{film?.release_date.split("-")[0]}</p>
               <p className="text-muted-foreground">Directed by</p>
               {directors?.map((director, index) => (
-                <p className="underline">
+                <p key={index} className="underline">
                   {director.name}
                   {index + 1 < directors.length ? ", " : ""}
                 </p>
