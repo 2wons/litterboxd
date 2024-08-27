@@ -57,6 +57,7 @@ const Actor = () => {
       )
         .then((res) => {
           setPerson(res!);
+          document.title = `${res?.name} | Letterboxd`;
         })
         .catch((err) => {
           console.log(err);

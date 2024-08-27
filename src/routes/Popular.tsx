@@ -14,6 +14,9 @@ const Popular = () => {
   const [filmCount, setFilmCount] = useState(0);
 
   const page = params.pageno ?? "1";
+
+  document.title = "Popular Films | Letterboxd";
+
   useEffect(() => {
     (async () => {
       setLoading(true);
