@@ -1,50 +1,9 @@
 import { Container } from "@/components/container";
 import PosterGallery from "@/components/poster-gallery";
+import { PersonResponse } from "@/services/schema";
 import { image, tmdb } from "@/services/tmdb-service";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-/* 
-TODO: fix this ugly thing..
- */
-type PersonResponse = {
-  adult: boolean;
-  also_known_as: string[];
-  biography: string;
-  birthday: string;
-  deathday: string | null;
-  gender: number;
-  homepage: string | null;
-  id: number;
-  imdb_id: string;
-  known_for_department: string;
-  name: string;
-  place_of_birth: string;
-  popularity: number;
-  profile_path: string;
-  movie_credits: {
-    cast: Array<{
-      adult: boolean;
-      backdrop_path: string;
-      genre_ids: number[];
-      id: number;
-      original_language: string;
-      original_title: string;
-      overview: string;
-      popularity: number;
-      poster_path: string;
-      release_date: string;
-      title: string;
-      video: boolean;
-      vote_average: number;
-      vote_count: number;
-      character: string;
-      credit_id: string;
-      order: number;
-      media_type: string;
-    }>;
-  };
-};
 
 const Actor = () => {
   const [person, setPerson] = useState<PersonResponse>();
