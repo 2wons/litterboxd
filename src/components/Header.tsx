@@ -24,7 +24,7 @@ const Header = () => {
         {open ? (
           <div
             onBlur={() => setOpen(!open)}
-            className="sm:hidden absolute w-full left-0 right-0 flex flex-col items-center bg-[#14181c] text-muted-foreground p-5 rounded-b-md space-y-2 animate-in slide-in-from-top-5 z-10"
+            className="sm:hidden absolute w-full left-0 right-0 flex flex-col items-center bg-black-pearl text-muted-foreground p-5 rounded-b-md space-y-2 animate-in slide-in-from-top-5 z-10"
           >
             <NavLinks />
           </div>
