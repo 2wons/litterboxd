@@ -1,11 +1,12 @@
 import dotsLogo from "@/assets/letterboxd-dots-logo.png";
 import { Input } from "@/components/ui/input";
 import { Menu } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   return (
     <nav>
@@ -21,14 +22,19 @@ const Header = () => {
             <Menu onClick={() => setOpen((prev) => !prev)} />
           </div>
         </div>
-        {open ? (
+
+        <div
+          onBlur={() => setOpen(!open)}
+          className={`sm:hidden absolute w-full left-0 right-0 transition-all ease-in-out delay-75 z-10 duration-300 overflow-y-hidden`}
+          style={{ height: open ? ref.current?.offsetHeight || 0 : 0 }}
+        >
           <div
-            onBlur={() => setOpen(!open)}
-            className="sm:hidden absolute w-full left-0 right-0 flex flex-col items-center bg-black-pearl text-muted-foreground p-5 rounded-b-md space-y-2 animate-in slide-in-from-top-5 z-10"
+            ref={ref}
+            className="flex flex-col items-end text-xl bg-black-pearl text-muted-foreground p-5 space-y-4 rounded-b-md"
           >
             <NavLinks />
           </div>
-        ) : null}
+        </div>
       </header>
     </nav>
   );
@@ -63,8 +69,8 @@ const NavLinks = () => {
         Lists
       </a>
       <Input
-        placeholder="search"
-        className="rounded-3xl opacity-65 bg-gray-500 p-2 text-xs border-0 h-auto min-w-28"
+        placeholder="Search Film"
+        className="rounded-3xl opacity-85 bg-gray-200 p-2 text-x text-black hover:text-gray-200 border-0 h-auto min-w-28"
         onChange={(event) => {
           setSearch(event.target.value);
         }}
