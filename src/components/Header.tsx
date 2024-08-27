@@ -86,7 +86,7 @@ const NavLinks = () => {
       </a>
       <Input
         placeholder="Search Film"
-        className="rounded-3xl opacity-85 bg-gray-200 p-2 text-x text-black hover:text-gray-200 border-0 h-auto min-w-28"
+        className="rounded-3xl opacity-65 bg-gray-200 p-2 text-xs text-black placeholder:text-zinc-500 hover:text-gray-200 border-0 h-auto min-w-28"
         onChange={(event) => {
           setSearch(event.target.value);
         }}
