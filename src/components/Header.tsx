@@ -1,6 +1,6 @@
 import dotsLogo from "@/assets/letterboxd-dots-logo.png";
 import { Input } from "@/components/ui/input";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -19,7 +19,23 @@ const Header = () => {
             <NavLinks />
           </div>
           <div className="sm:hidden">
-            <Menu onClick={() => setOpen((prev) => !prev)} />
+            {open ? (
+              <div className="transform transition-transform duration-300 animate-in rotate-90">
+                <X
+                  className="cursor-pointer"
+                  onClick={() => setOpen(!open)}
+                  size={24}
+                />
+              </div>
+            ) : (
+              <div className="transform transition-transform duration-300 animate-in rotate-180">
+                <Menu
+                  className="cursor-pointer"
+                  onClick={() => setOpen(!open)}
+                  size={24}
+                />
+              </div>
+            )}
           </div>
         </div>
 
