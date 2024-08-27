@@ -4,6 +4,8 @@ function Landing() {
   const splash =
     "https://image.tmdb.org/t/p/original//2RVcJbWFmICRDsVxRI8F5xRmRsK.jpg";
 
+  document.title = "Letterboxd";
+
   return (
     <main className="px-4 lg:px-28">
       <div

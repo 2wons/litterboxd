@@ -26,6 +26,7 @@ const Film = () => {
         .then((response) => {
           setFilm(response!);
           filterDirectors(response!);
+          document.title = `${response?.original_title} | Letterboxd`;
         })
         .catch((err) => {
           console.log(err);

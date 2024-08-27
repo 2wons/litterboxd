@@ -8,7 +8,7 @@ export const image = (link: string) => {
   return `${IMG_BASE_URL}/w300/${link}`;
 };
 
-export const tmdb = async <T,>(endpoint: string): Promise<T | void> => {
+export const tmdb = async <T,>(endpoint: string): Promise<T | never> => {
   try {
     const response = await fetch(`${BASE_URL}/3${endpoint}`, {
       method: "GET",
@@ -25,7 +25,7 @@ export const tmdb = async <T,>(endpoint: string): Promise<T | void> => {
     const data: T = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(`Error: ${error}`);
   }
 };
 

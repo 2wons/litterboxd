@@ -1,43 +1,69 @@
 import dotsLogo from "@/assets/letterboxd-dots-logo.png";
 import { Input } from "@/components/ui/input";
-import { Menu } from "lucide-react";
-import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <>
-      <nav>
-        <header className="px-4 xl:px-52">
-          <div className="flex flex-row justify-between items-center w-full py-5">
-            <Link to="/">
-              <div className="flex flex-row items-center space-x-2">
-                <img src={dotsLogo} className="w-1/12 h-auto" alt="dots-logo" />
-                <h1 className="text-xl sm:text-3xl font-logo bg-gradient-to-b from-[#f5f5f5] to-[#dcdcdc] bg-clip-text text-transparent">
-                  Letterboxd
-                </h1>
-              </div>
-            </Link>
-            <div className="hidden sm:flex flex-row justify-self-end items-center space-x-4 text-gray-200">
-              <NavLinks />
-            </div>
-            <div className="sm:hidden">
-              <Menu onClick={() => setOpen((prev) => !prev)} />
-            </div>
+    <nav>
+      <header className="px-4 xl:px-52 relative">
+        <div className="flex justify-between items-center w-full py-5">
+          <Link to="/">
+            <Logo />
+          </Link>
+          <div className="hidden sm:flex justify-self-end items-center space-x-4 text-gray-200">
+            <NavLinks />
           </div>
-          {open ? (
-            <div
-              onBlur={() => setOpen(!open)}
-              className="sm:hidden flex flex-col items-center bg-[#14181c] text-muted-foreground p-3 rounded-b-md space-y-2 animate-in fade-in zoom-in-95 slide-in-from-top-2"
-            >
-              <NavLinks />
-            </div>
-          ) : null}
-        </header>
-      </nav>
-    </>
+          <div className="sm:hidden">
+            {open ? (
+              <div className="transform transition-transform duration-300 animate-in rotate-90">
+                <X
+                  className="cursor-pointer"
+                  onClick={() => setOpen(!open)}
+                  size={24}
+                />
+              </div>
+            ) : (
+              <div className="transform transition-transform duration-300 animate-in rotate-180">
+                <Menu
+                  className="cursor-pointer"
+                  onClick={() => setOpen(!open)}
+                  size={24}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div
+          onBlur={() => setOpen(!open)}
+          className={`sm:hidden absolute w-full left-0 right-0 transition-all ease-in-out delay-75 z-10 duration-300 overflow-y-hidden`}
+          style={{ height: open ? ref.current?.offsetHeight || 0 : 0 }}
+        >
+          <div
+            ref={ref}
+            className="flex flex-col items-end text-xl bg-black-pearl text-muted-foreground p-5 space-y-4 rounded-b-md"
+          >
+            <NavLinks />
+          </div>
+        </div>
+      </header>
+    </nav>
+  );
+};
+
+export const Logo = () => {
+  return (
+    <div className="flex items-center space-x-2 max-w-min">
+      <img src={dotsLogo} className="w-1/6 h-auto" alt="dots-logo" />
+      <h1 className="text-xl sm:text-3xl font-logo bg-gradient-to-b from-[#f5f5f5] to-[#dcdcdc] bg-clip-text text-transparent max-w-min">
+        Letterboxd
+      </h1>
+    </div>
   );
 };
 
@@ -59,8 +85,8 @@ const NavLinks = () => {
         Lists
       </a>
       <Input
-        placeholder="search"
-        className="rounded-3xl opacity-65 bg-gray-500 p-2 text-xs border-0 h-auto min-w-28"
+        placeholder="Search Film"
+        className="rounded-3xl opacity-65 bg-gray-200 p-2 text-xs text-black placeholder:text-zinc-500 hover:text-gray-200 border-0 h-auto min-w-28"
         onChange={(event) => {
           setSearch(event.target.value);
         }}

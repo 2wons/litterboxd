@@ -4,6 +4,8 @@ const ErrorPage = () => {
   const error: any = useRouteError();
   console.error(error);
 
+  document.title = "Page Not Found | Letterboxd";
+
   return (
     <div className="p-5">
       <h1 className="text-4xl font-bold">Oops!</h1>
