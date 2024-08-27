@@ -8,36 +8,40 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <nav>
-        <header className="px-4 xl:px-52">
-          <div className="flex flex-row justify-between items-center w-full py-5">
-            <Link to="/">
-              <div className="flex flex-row items-center space-x-2">
-                <img src={dotsLogo} className="w-1/12 h-auto" alt="dots-logo" />
-                <h1 className="text-xl sm:text-3xl font-logo bg-gradient-to-b from-[#f5f5f5] to-[#dcdcdc] bg-clip-text text-transparent">
-                  Letterboxd
-                </h1>
-              </div>
-            </Link>
-            <div className="hidden sm:flex flex-row justify-self-end items-center space-x-4 text-gray-200">
-              <NavLinks />
-            </div>
-            <div className="sm:hidden">
-              <Menu onClick={() => setOpen((prev) => !prev)} />
-            </div>
+    <nav>
+      <header className="px-4 xl:px-52 relative">
+        <div className="flex justify-between items-center w-full py-5">
+          <Link to="/">
+            <Logo />
+          </Link>
+          <div className="hidden sm:flex justify-self-end items-center space-x-4 text-gray-200">
+            <NavLinks />
           </div>
-          {open ? (
-            <div
-              onBlur={() => setOpen(!open)}
-              className="sm:hidden flex flex-col items-center bg-[#14181c] text-muted-foreground p-3 rounded-b-md space-y-2 animate-in fade-in zoom-in-95 slide-in-from-top-2"
-            >
-              <NavLinks />
-            </div>
-          ) : null}
-        </header>
-      </nav>
-    </>
+          <div className="sm:hidden">
+            <Menu onClick={() => setOpen((prev) => !prev)} />
+          </div>
+        </div>
+        {open ? (
+          <div
+            onBlur={() => setOpen(!open)}
+            className="sm:hidden absolute w-full left-0 right-0 flex flex-col items-center bg-[#14181c] text-muted-foreground p-5 rounded-b-md space-y-2 animate-in slide-in-from-top-5 z-10"
+          >
+            <NavLinks />
+          </div>
+        ) : null}
+      </header>
+    </nav>
+  );
+};
+
+export const Logo = () => {
+  return (
+    <div className="flex items-center space-x-2 max-w-min">
+      <img src={dotsLogo} className="w-1/6 h-auto" alt="dots-logo" />
+      <h1 className="text-xl sm:text-3xl font-logo bg-gradient-to-b from-[#f5f5f5] to-[#dcdcdc] bg-clip-text text-transparent max-w-min">
+        Letterboxd
+      </h1>
+    </div>
   );
 };
 
