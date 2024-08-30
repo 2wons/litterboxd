@@ -6,7 +6,6 @@ type HeadProps = {
 };
 
 const Head = ({ title = "", description = "" }: HeadProps = {}) => {
-  console.log("Head Component Rendered");
   return (
     <Helmet
       title={title ? `${title} | Letterboxd` : undefined}
