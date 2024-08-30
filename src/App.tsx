@@ -10,13 +10,11 @@ import { router } from "@/router";
 
 function App() {
   return (
-    <div className="">
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <TooltipProvider>
-          <RouterProvider router={router} />
-        </TooltipProvider>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <TooltipProvider>
+        <RouterProvider router={router} />
+      </TooltipProvider>
+    </ThemeProvider>
   );
 }
 
