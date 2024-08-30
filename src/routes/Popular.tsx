@@ -15,8 +15,6 @@ const Popular = () => {
 
   const page = params.pageno ?? "1";
 
-  document.title = "Popular Films | Letterboxd";
-
   useEffect(() => {
     (async () => {
       setLoading(true);
@@ -33,7 +31,7 @@ const Popular = () => {
   }, [page]);
 
   return (
-    <Container>
+    <Container title="Popular Films">
       <div className="flex justify-between text-muted-foreground text-sm pb-1">
         <span className="">films</span>
         <div className="space-x-2">

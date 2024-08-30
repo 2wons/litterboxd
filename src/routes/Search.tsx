@@ -34,7 +34,7 @@ const Search = () => {
   }, [keyword, page]);
 
   return (
-    <Container>
+    <Container title={`Search "${keyword}"`}>
       <div className="md:flex md:space-x-16">
         <div className="w-full md:w-3/4">
           <SectionHeading

@@ -5,6 +5,7 @@ import { getFilm, IMG_BASE_URL } from "@/services/tmdb-service";
 import { Credit, FilmDetail } from "@/services/schema";
 import { TvMinimalPlay } from "lucide-react";
 import InteractionCard from "@/components/interaction-card";
+import Head from "@/components/seo/head";
 
 const Film = () => {
   const [film, setFilm] = useState<FilmDetail>();
@@ -26,7 +27,6 @@ const Film = () => {
         .then((response) => {
           setFilm(response!);
           filterDirectors(response!);
-          document.title = `${response?.original_title} | Letterboxd`;
         })
         .catch((err) => {
           console.log(err);
@@ -38,6 +38,7 @@ const Film = () => {
   const params = useParams();
   return (
     <div className="px-4 xl:px-56 py-2 my-0">
+      <Head title={film?.original_title} />
       {film?.backdrop_path && (
         <div
           className="movie-backdrop right-0 sm:mx-28 absolute z-[-100] block max-w-full h-[500px] top-0 left-0 bg-center bg-no-repeat bg-cover animate-fade-in duration-700"

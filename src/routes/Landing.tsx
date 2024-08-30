@@ -1,13 +1,13 @@
+import Head from "@/components/seo/head";
 import { Button } from "@/components/ui/button";
 
 function Landing() {
   const splash =
     "https://image.tmdb.org/t/p/original//2RVcJbWFmICRDsVxRI8F5xRmRsK.jpg";
 
-  document.title = "Letterboxd";
-
   return (
     <main className="px-4 lg:px-28">
+      <Head description="A fan-made letterboxd clone" />
       <div
         className="movie-backdrop absolute z-[-100] block w-full h-[500px] top-0 left-0 bg-center bg-no-repeat bg-cover animate-fade-in duration-700"
         style={{

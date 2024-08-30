@@ -17,7 +17,6 @@ const Actor = () => {
       )
         .then((res) => {
           setPerson(res!);
-          document.title = `${res?.name} | Letterboxd`;
         })
         .catch((err) => {
           console.log(err);
@@ -25,7 +24,7 @@ const Actor = () => {
     })();
   }, []);
   return (
-    <Container>
+    <Container title={person?.name || ""}>
       <div className="md:grid grid-cols-3 gap-10">
         <section className="col-span-2">
           <p className="text-muted-foreground text-md">Films Starring</p>
