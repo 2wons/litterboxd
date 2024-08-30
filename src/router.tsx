@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import Landing from "./routes/Landing";
-import ErrorPage from "./routes/Error";
+import NotFound from "./routes/not-found";
 import FilmList from "./routes/Films";
 import Layout from "./components/Layout";
 import Film from "./routes/Film";
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <ErrorPage />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
