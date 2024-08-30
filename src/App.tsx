@@ -2,9 +2,9 @@ import "./App.css";
 
 import { RouterProvider } from "react-router-dom";
 
-import { ThemeProvider } from "./components/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 
-import { TooltipProvider } from "./components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { router } from "@/router";
 

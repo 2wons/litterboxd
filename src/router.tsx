@@ -1,17 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Landing from "./routes/Landing";
-import NotFound from "./routes/not-found";
-import FilmList from "./routes/Films";
-import Layout from "./components/Layout";
-import Film from "./routes/Film";
-import Crew from "./routes/Film/Crew";
-import Cast from "./routes/Film/Cast";
-import Details from "./routes/Film/Details";
-import Genre from "./routes/Film/Genre";
-import Popular from "./routes/Popular";
-import Actor from "./routes/Actor";
-import Search from "./routes/Search";
+import Landing from "@/routes/Landing";
+import NotFound from "@/routes/not-found";
+import FilmList from "@/routes/Films";
+import Layout from "@/components/Layout";
+import Film from "@/routes/Film";
+import Crew from "@/routes/Film/Crew";
+import Cast from "@/routes/Film/Cast";
+import Details from "@/routes/Film/Details";
+import Genre from "@/routes/Film/Genre";
+import Popular from "@/routes/Popular";
+import Actor from "@/routes/Actor";
+import Search from "@/routes/Search";
 
 export const router = createBrowserRouter([
   {
