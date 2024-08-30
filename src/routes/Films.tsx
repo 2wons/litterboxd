@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 import { getPopularFilms, IMG_BASE_URL } from "@/services/tmdb-service";
 import { Film } from "@/services/schema";
 import { Link } from "react-router-dom";
+import { Container } from "@/components/container";
 
 // 2c3440 #14181c
 
@@ -47,7 +48,7 @@ const FilmList = () => {
     fetchPopular();
   }, []);
   return (
-    <div className="px-4 lg:px-52 items-center py-2 pt-10 bg-gradient-to-b from-[#1e242c] to-black-pearl">
+    <Container title="Popular Films">
       <div className="md:flex flex-row space-y-1 md:space-y-0 md:space-x-3 items-center">
         <p className="text-muted-foreground min-w-max">Browse by</p>
         <Menubar>
@@ -160,7 +161,7 @@ const FilmList = () => {
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 };
 

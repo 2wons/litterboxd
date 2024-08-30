@@ -1,6 +1,6 @@
 import { CalendarPlus, Eye, Heart, Star } from "lucide-react";
-import SectionHeading from "./section-heading";
-import ActionButton from "./action-button";
+import SectionHeading from "@/components/section-heading";
+import ActionButton from "@/components/action-button";
 
 const InteractionCard = () => {
   return (

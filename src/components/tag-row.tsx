@@ -1,4 +1,4 @@
-import Tag from "./tag";
+import Tag from "@/components/tag";
 
 type TagRowProps = {
   label: string;
